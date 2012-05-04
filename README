@@ -1,0 +1,87 @@
+KivaDoc
+=======
+
+KivaDoc is a document mark-up language that has been inspired by AsciiDoc, 
+Creole and XWiki.
+
+This project is a Java library that can convert KivaDoc documents into HTML.
+This README file is an example of a valid KivaDoc document. Open up 
+syntax.html to learn the syntax by examples.
+
+
+Features
+--------
+
+* Compact syntax. Inspiration from AsciiDoc, Creole and XWiki.
+* KivaDoc is fast. Here are some benchmarks of Java parsers for Markdown,
+  a considerably simpler mark-up language, compared with KivaDoc:
+	* KivaDoc: 430 docs/sec
+	* MarkdownPapers: 300 docs/sec
+	* markdownj: 17 docs/sec
+	* pegdown: 48 docs/sec
+* Plain Java with no parsing libraries used, yet a rather small codebase.
+* Two-phase conversion process: First the mark-up is parsed
+  into a DOM structure (org.kivadoc.dom), which can then be
+  converted into HTML and possibly other output formats.  
+  DocHtmlEmitter.java + HtmlBuilder.java is only 600 lines of code.
+  An emitter for DocBook, Latex and other formats should be a similar 
+  amount of code.
+* Advanced features such as nested tables, row/col spans, cross-references
+  and table-of-contents generation.
+* Produces a list of warnings/errors for malformed documents (missing
+  internal link targets, bad syntax etc).
+
+
+Basic API usage
+---------------
+
+Here's an example of using the very high level API to the library:
+
+  // read the document from a file perhaps
+  String kivadoc = "hello world\n======\n\nfirst paragraph";
+  // parse it to a DOM structure
+  KivaDocument doc = new FullDocumentParser().parse(kivadoc);
+  // convert it to HTML
+  FullHtmlEmitter emitter = new FullHtmlEmitter();
+  String html = emitter.toHtmlString(doc);
+  // print it?
+  System.out.println(html);
+  // => prints out "<h1>hello world</h1><p>first paragraph </p>"
+  
+  // no parser errors?
+  System.out.println(doc.getErrors().isEmpty()); // => true
+  // no emitter errors?
+  System.out.println(emitter.getErrors().isEmpty()); // => true
+
+
+Building
+--------
+
+The project is built with Maven ( http://maven.apache.org/ ). Simply
+run the command
+
+ $ mvn install 
+
+
+License
+-------
+
+Copyright 2012 Hannu Kankaanpää
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License
+
+
+Author
+------
+
+Hannu Kankaanpää <hannu.kp@gmail.com>
