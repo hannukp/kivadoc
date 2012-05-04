@@ -1,0 +1,15 @@
+Glossary file
+=============
+
+|foo|typical
+|bar|atypical
+
+another glossary table:
+
+|=============
+|hello | followed by world
+
+|x
+|**y**
+
+|=============

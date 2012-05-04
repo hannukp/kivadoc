@@ -1,0 +1,42 @@
+Table:
+|====
+
+|=foo|= bar
+|bam
+
+bam2
+| baz
+|======
+
+Simple table:
+|= foo | bar
+|=
+ bam~|
++
+b
+| baz
+
+Nested table:
+|a|b
+|c|table:
+~|======
+~|x~|y
+~|z~|w
+~|======
+|e|f
+
+Simple spans:
+|a|b|c
+|(%rowspan:2%)d|(%colspan:2%)e
+|h|i
+
+Header span:
+|=(%colspan:3%) title
+|a|b|c
+
+Box spans:
+|x|=(%colspan:2;rowspan:2%) title
+|y|=(%colspan:3%)a
+
+Styled empty cell:
+|(%background-color:blue%)|Blue

@@ -1,0 +1,48 @@
+listing:
+
+-a
+--b
+ -c
+
+stuff:
+
+-**foo**: bar
+-**bam**: baz
+
+-foo
+**bar**
+
+-list~
+ broken
+
+mixed bullets:
+
+-foo
+*bar
+
+mixed bullets2:
+
+-foo
+-*bar
+
+invalid:
+
+-#foo
+-#bar
+
+valid:
+
+-foo
+-#bar
+
+drop to base:
+
+-**bar**
+	-**baz**
+-bom
+
+invalid drop:
+
+-**bar**
+	-**baz**
+--bom

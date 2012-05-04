@@ -1,0 +1,23 @@
+Some code:
+
+  if (foo < 3) {
+    //hello world
+    
+    System.out.println("ok");
+  }
+
+Equivalent notation:
+
+++++++
+
+if (foo < 3) {
+  //hello world
+  
+  System.out.println("ok");
+}
+
+++++++
+
+Compact code is not code:
+ Tralala
+Fin.

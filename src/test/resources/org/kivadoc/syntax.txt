@@ -1,0 +1,417 @@
+Document Structure
+-----------------------------------------------------------------------------
+
+Here is an example of a simple document:
+
+++++++++++++++++++++++++++++++++
+Document title
+====================
+toc:auto
+attribute2:foo
+
+Document body...
+++++++++++++++++++++++++++++++++
+
+The first line of the document is the document title. The second line
+is a divisor-line (one or more "="-characters). Then comes a list of 
+attributes; key:value, key:value. 
+
+After an empty line, the document itself begins.
+
+Document Attributes
+-----------------------------------------------------------------------------
+
+Currently recognized attributes are:
+
+|= Attribute |= Description
+| toc:auto | Automatically generate a table-of-contents for the document.
+| style:<style-sheet-path> | Includes the CSS style sheet to the document.
+
+Common Structural Elements
+-----------------------------------------------------------------------------
+
+(% width: 100% %)
+|==========================================================
+|= (% width: 50% %) Syntax |= (% width: 50% %) Result
+
+|++++++++++++++++
+Header 1
+-------------
+Normal text.
+
+Another paragraph.
+
+== Header 1 (alternative syntax)
+=== Header 2
+==== Header 3
+Some text
+=== Header 2b
+==== Header 3b =======
+Using =-characters at the end of a single-line header is optional.
+===== Header 4
+====== Header 5
+
+++++++++++++++++|
+Header 1
+-------------
+Normal text.
+
+Another paragraph.
+
+== Header 1 (alternative syntax)
+=== Header 2
+==== Header 3
+Some text
+=== Header 2b
+==== Header 3b =======
+Using =-characters at the end of a single-line header is optional.
+===== Header 4
+====== Header 5
+
+
+|+++++++++++++++
+Text.
+%% Just a note for myself... This line not included in the output.
+More text.
++++++++++++++++|
+Text.
+%% Just a note for myself... This line not included in the output.
+More text.
+
+|++++++++++++++++
+* List starts here
+** List level 2
+*** List level 3
+*Back to level 1
+ * You can also use indentation to go deeper
+  *And deeper
+ *Any number of tabs/spaces is valid.
+  -you can also use "-"-symbol instead of "*"
+  -new list or new indentation level must start with just one bullet-symbol (*/-/#)
+++++++++++++++++|
+* List starts here
+** List level 2
+*** List level 3
+*Back to level 1
+ * You can also use indentation to go deeper
+  *And deeper
+ *Any number of tabs/spaces is valid.
+  -you can also use "-"-symbol instead of "*"
+  -new list or new indentation level must start with just one bullet-symbol (*/-/#)
+
+|+++++++++++++++
+#ordered list
+  -nested ordered list
+  -nesting continued
+#second item
+  #nested ordered list
++
+Another paragraph in 2.1.
+  #nested list item 2
+#root level item 3
+++++++++++++++++|
+#ordered list
+  -nested ordered list
+  -nesting continued
+#second item
+  #nested ordered list
++
+Another paragraph in 2.1.
+  #nested list item 2
+#root level item 3
+
+|==========================================================
+
+
+Styling
+-----------------------------------------------------------------------------
+
+(% width: 100% %)
+|==========================================================
+|= (% width: 50% %) Syntax |= (% width: 50% %) Result
+
+|++++++++++++++++++
+**Bold font** //Emphasis// (% color:red %)[Red text] ++monospace++
++++++++++++++++++|
+**Bold font** //Emphasis// (% color:red %)[Red text] ++monospace++
+
+|++++++++++++++++++
+**You can //Mix// (% background-color:yellow %)[and //nest//]** 
+styles (++but **not** in monospace++)
++++++++++++++++++|
+**You can //Mix// (% background-color:yellow %)[and //nest//]** 
+styles (++but **not** in monospace++)
+
+|++++++++++++++++++
+Line~~
+break
++++++++++++++++++|
+Line~~
+break
+
+|++++++++++++++++++
+Special symbols that are recognized and converted to unicode characters: 
+<->, <=>, ->, <-, =>, <=, >>, <<,  
+<-->, <==>, -->, <--, ==>, <==, 
+---, --, (c), (C), (r), (R), (tm), (TM), ...
+
+You can also use unicode characters directly: ⬆ ⬇ ®
+++++++++++++++++++|
+Special symbols that are recognized and converted to unicode characters: 
+<->, <=>, ->, <-, =>, <=, >>, <<, ---,
+<-->, <==>, -->, <--, ==>, <==, 
+---, --, (c), (C), (r), (R), (tm), (TM), ...
+
+You can also use unicode characters directly: ⬆ ⬇ ®
+
+|++++++++++++++++++
+(% float:right; background-color: #dde; padding: 1em %)
+[[[A styled block, floating to the right...
+
+Still floating...]]]
+
+(% background-color: #edd; padding: 1em %)
+Styled paragraph...
+
+(% style: invalidlink; padding: 1em %)
+"Style" attribute lets you use css classes.
+
+(% color: blue; list-style-type:square %)
+* You can apply
+* block-level styling ~~(% CSS %)
+* to most structural elements
+(% color: red; list-style-type:lower-alpha %)
+   # headers
+   # tables
+   # lists, paragraphs, etc...
+
+(% padding: 1em; background-color: #eef; border: 2px dashed #66d; %)
+**INFO**
+
++++++++++++++++++|
+(% float:right; background-color: #dde; padding: 1em %)
+[[[A styled block, floating to the right...
+
+Still floating...]]]
+
+(% background-color: #edd; padding: 1em %)
+Styled paragraph...
+
+(% style: invalidlink; padding: 1em %)
+"Style" attribute lets you use css classes.
+
+(% color: blue; list-style-type:square %)
+* You can apply
+* block-level styling ~~(% CSS %)
+* to most structural elements
+(% color: red; list-style-type:lower-alpha %)
+   # headers
+   # tables
+   # lists, paragraphs, etc...
+
+(% padding: 1em; background-color: #eef; border: 2px dashed #66d; %)
+**INFO**
+
+|==========================================================
+
+
+Advanced Features
+-----------------------------------------------------------------------------
+
+(% width: 100% %)
+|==========================================================
+|= (% width: 50% %) Syntax |= (% width: 50% %) Result
+
+|++++++++++++++++++
+image:favicon.ico[Favicon]
+++++++++++++++++++|
+image:favicon.ico[Favicon]
+
+|++++++++++++++++++
+-http://www.wikipedia.org/
+-http://www.wikipedia.org/[Wikipedia]
+-link:kivawiki.css
+-link:kivawiki.css[Style file]
+
+++++++++++++++++++|
+-http://www.wikipedia.org/
+-http://www.wikipedia.org/[Wikipedia]
+-link:kivawiki.css
+-link:kivawiki.css[Style file]
+
+|++++++++++++++++++
+Internal link: {#target}.
+
+(##target##Goal)
+
+Link with text: {#target}[Click **here**].
+
+Section headers may be referenced by the text in the header: {#Advanced Features}, {#Header 3b}.
+
+++++++++++++++++++|
+Internal link: {#target}.
+
+(##target##Goal)
+
+Link with text: {#target}[Click **here**].
+
+Section headers may be referenced by the text in the header: {#Advanced Features}, {#Header 3b}.
+
+|++++++++++++++++++
+Escape mark-up with ~~~~: ~~**not bold~~**, link~~:notlink.png.
+++++++++++++++++++|
+Escape mark-up with ~~~~: ~~**not bold~~**, link~~:notlink.png.
+
+|++++++++++++++++++
+ Code:
+ +++++++++++++++++++
+ for (int i = 0; i < 2; i++) {
+   System.out.println("Hello world");
+ }          //spaces are preserved
+ +++++++++++++++++++
+
+++++++++++++++++++|
+Code:
++++++++++++++++++++
+for (int i = 0; i < 2; i++) {
+  System.out.println("Hello world");
+}          //spaces are preserved
++++++++++++++++++++
+
+|++++++++++++++++++
+Indentation also makes a code-block:
+
+ a       c
+  b     d
+You'll need an empty line before the indented code.
+  Otherwise you'll get normal text.
+++++++++++++++++++|
+Indentation also makes a code-block:
+
+ a       c
+  b     d
+You'll need an empty line before the indented code. 
+  Otherwise you'll get normal text.
+
+|++++++++++++++++++
+Comment block:
+%%%%%%%%%%%%%%%%%%%
+With a comment block you can easily comment out pieces of 
+the document that are not finished, or write hidden notes
+for yourself. 
+%%%%%%%%%%%%%%%%%%%
+
+++++++++++++++++++|
+Comment block:
+%%%%%%%%%%%%%%%%%%%
+With a comment block you can easily comment out pieces of 
+the document that are not finished, or write hidden notes
+for yourself. 
+%%%%%%%%%%%%%%%%%%%
+
+
+|==========================================================
+
+Tables
+-----------------------------------------------------------------------------
+
+(% width: 100% %)
+|==========================================================
+|= (% width: 50% %) Syntax |= (% width: 50% %) Result
+
+|++++++++++++++++++
+~|a~|b~|c
+~|d~|e~|f
+
+++++++++++++++++++|
+~|a~|b~|c
+~|d~|e~|f
+
+|++++++++++++++++++
+~|= Name ~|= Value
+~| Bill Gates ~| $50B
+~| John Doe ~| $50
+
+++++++++++++++++++
+Header cells start with "="-character.
+|
+~|= Name ~|= Value
+~| Bill Gates ~| $50B
+~| John Doe ~| $50
+
+|++++++++++++++++++
+(% width: 100% %)
+~|= (% width: 20% %) Name ~| (% width: 60% %) Bill Gates ~| John Doe
+~|= Value ~|  $50B ~| (%color:red%) $50
+
+++++++++++++++++++|
+(% width: 100% %)
+~|= (% width: 20% %) Name ~| (% width: 60% %) Bill Gates ~| John Doe
+~|= Value ~|  $50B ~| (%color:red%) $50
+
+|++++++++++++++++++
+~|=========================================
+~|Use~|table~|delimiters (~~~|===).
+
+~|then
+~|you
+~|can
+
+~|add
+~|some
+~|whitespace.
+
+~|=========================================
+++++++++++++++++++
+The amount of columns in a table is determined from its first line.
+Also note that if you want to include the pipe-character (~|) inside a table,
+you'll have to escape it with ~~~~.
+|
+~|=========================================
+~|Use~|table~|delimiters (~~~|===).
+
+~|then
+~|you
+~|can
+
+~|add
+~|some
+~|whitespace.
+
+~|=========================================
+
+|++++++++++++++++++
+~|=========================================
+~|a~|b
+~|c~|
+
+~~~|Nested~~~|tables
+~~~|can be~~~|done
+
+~|=========================================
+
+++++++++++++++++++|
+~|=========================================
+~|a~|b
+~|c~|
+
+~~~|Nested~~~|tables
+~~~|can be~~~|done
+
+~|=========================================
+
+|++++++++++++++++++
+~|= (% width: 4em; colspan:2; rowspan:2 %) BOX BIX BAX ~| a
+~|b
+~|(%colspan:3; background-color: yellow %)c 
+
+++++++++++++++++++
+++rowspan++ and ++colspan++ are treated in a special way, not as CSS styles 
+but as attributes of the cell.
+
+|
+~|= (% width: 4em; colspan:2; rowspan:2 %) BOX BIX BAX ~| a
+~|b
+~|(%colspan:3; background-color: yellow %)c 
+
+|==========================================================

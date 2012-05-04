@@ -1,0 +1,11 @@
+Foo bar
+%%comment
+baz
+
+Block comment
+%%%%%%%%%%%%%%%%%%%
+hello world
+
+sdf
+%%%
+or was it?

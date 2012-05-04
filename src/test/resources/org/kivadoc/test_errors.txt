@@ -1,0 +1,22 @@
+Table errors:
+
+|============
+stuff
+|helo | world
+|============
+
+|(%colspan:0%)Span error
+
+|(%rowspan:100%)Span error2
+
+|a|b
+|c
+
+|============
+
+|============
+
+|a|b
+|(%colspan:3%)c
+
+|**hello

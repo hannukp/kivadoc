@@ -1,0 +1,54 @@
+List:
+
+* keep
+* it
+** simple
+** stupid
+* ok?
+
+List2:
+
+-item1
+-item2
+	-subitem4
+	subitem4b
+		-subsubitem1
+			subsubitem1b
+	-subitem5
+	--subsubitem2
+
+Ordered list:
+
+# item1
+#* item-bullet
+# item2
+
+Misc:
+
+* **bold** item
+*//italic// item
+# numbered list suddenly
+
+Complex data:
+
+-item1
++
+ code
+ 
+ code line 2
++
+text
+--item2
+++++++++++++++++
+code
+
+code line 2
+++++++++++++++++
++
+text
+
+**bold stuff**
+
+##anchor_target##
+
+Fin.

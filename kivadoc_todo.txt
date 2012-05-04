@@ -1,0 +1,159 @@
+-parse warnings (e.g. style not closed, unknown cross-reference, invalid header)
+	-StyleParser errors
+
+TODO LATER:
+====================
+-glossary, references
+-code, images, formulas could have captions and allow for cross-references.
+-numbered headers
+-latex back-end
+-definitions (dl,dt,dd)
+	; term 1
+	: definition 1
+	:; term 2
+	:: definition 2
+-footnotes ((footnote))
+-include other documents (\include-directives to compose a document out of many fragments)
+-horizontal rule: ----
+-user-defined macros:
+	%YES% => image:/res/yes.png
+	%YES% => (% color: green %)[YES]
+
+TODO MAYBE:
+====================
+-syntax highlighting
+-"TODO markers"
+-emitter that emits neat-looking version of the input document. pretty-printer
+	-many different ways to format e.g. code-blocks, tables, comment-blocks. How to preserve the original style? 
+	-comments need to be preserved
+-Javadoc-integration (include Javadoc html into the document)
+-list element LI could be parsed with a nested DocumentParser. Then there would be no
+ crazy logic about overriding blockTarget, and listParser could handle the whole list
+ all by itself..simplifying the tangled logic.
+ 	-difficulty: how to find out where a LI ends? It might have an embedded comment-block with empty lines inside it
+-ditaa (http://ditaa.sourceforge.net/) or graphviz
+-other types of boxes that stand out (e.g. red background box) (can be done using style classes and style blocks)
+
+DONE:
+====================
+-header:
+	toc: full
+-ability to use classes in styling (style: style attribute)
+-custom style sheets (style: header attribute)
+-emitter errors
+-invalid internal reference
+-in tables: check that even the last row has enough data
+-nested documents (table cells) line numbers need to be adjusted
+-ParagraphParser errors
+-wp: bg color for table cells + alignment
+-instead of \\ for line break, use ~ ("escape new line")
+-(% width:20em; float:left %)image:foo.png[Hello world] (works, just needs a line break after %))
+-ParagraphParser is called per line, not per paragraph. so style can't continue to next line
+-this does not work: 
+	"-**foo**: bar"
+-links that have [.)] after the link, that character is used as part of the link. 
+ Usually this is not wanted. Also it might be useful to say image:foo.png[]. 
+ So that the []-part ends the macro (but without causing the alt-text or body-text 
+ to be empty). http://foo.bar[] should produce same result as plain http://foo.bar .
+-css style is not applied to empty td cells
+-toc (toc:auto, toc:none, toc:full)
+-optional == at the end of single-line headers
+-fix colspan, rowspan	
+-table formatting (cell alignment, spans, bg color)
+-styling of paragraphs, table cells and tables with (( width:20em ))
+-wiki-link. Analogous to http://foo.bar[Foo], have {foo}[Foo]
+-anchors: {#goto} and then: ##goto## target place!
+-should be able to use |-character in tables inside images,links,alt,src etc using ~|.
+-multiline tables, escaping of |-character
+-list continuation (+)
+-ordered lists. Use # or .? # for anchor? But # is very commonly used for ordered lists. And anchors are rare.
+-http://www.wikicreole.org/wiki/Creole1.0
+-styling: (% color:blue %)
+-lite table syntax that doesn't need |===-delims
+	|=Title 1|=Title 2
+	|Word 1|Word 2
+-Table styling:
+	 -Use a thick rule to denote headlines and thin rules to separate lines. 
+	 -Don't use alternate background colours in rows, just use one and white. 
+	 -If you can, don't use vertical lines. Let the data in the tables indicate the columns. 
+	 -To give emphasis to a column heading, set it in CAPS. 
+	 -To emphasise a column, set it in bold, or highlight with a different background colour. 
+	 -Range numerical data right. 
+	 -Give more padding to the bottom of items than to the top. You can still keep the same overall line�height, but this gives the reader a sense of more whitespace.
+-escaping, e.g. \*. Or ~* (Creole).
+-colors ([red]#red text#) or (% color:red %)[red text]
+-image links possible? http://foo.bar[image:show.png\[cat\]]
+	-in WP, one doesn't need to escape nested brackets: [[foo|[[image]] bar]] works.
+-"Single punctuation characters (,.?!:;"') at the end of URLs should not be considered part of the URL."
+-line break. \\ in creole, + in asciidoc
+-special characters:
+	-ellipsis: u2026
+	-single quotes: &#8216 for left, &#8217 for right
+	-double-quotes: &#8220; for left, &#8221; for right
+	-em-dash: U+2014
+		-in AD: &#8201;&#8212;&#8201;
+	-arrow =>: &#8658;
+	-arrow ->: &#8594;
+	- → ← ↔ ⇒ ⇐ ⇔ » « – — 640×480 © ™ ®
+	- -> <- <-> => <= <=> >> << -- --- 640x480 (c) (tm) (r)
+-//italics// (conflicts with comments)
+-nested _*emphasis*_
+	-**//bold italics//**
+	-//**bold italics**//
+	-//This is **also** good.//
+-use doubled ** for emphasis..it's used so rarely
+-forced**emphasis**
+-comment blocks
+-link:foo/bar.html
+-https,ftp,mailto parsing
+-image:foo.png
+-old feature list:
+	*titles, subtitles
+	*TOC
+	*lists (ordered, unordered)
+		*nested
+	-references
+	*bold, italic fonts
+	*tables
+	*"comments" that are not part of the document and not shown in "final" version
+
+MISC:
+====================
+-main sources of inspiration:
+	-AsciiDoc
+		-multi-line headings
+		-comments
+		-code-blocks (both indented and delimited)
+		-monospace (++)
+		-images
+		-links
+		-indented lists
+	-Creole
+		-**
+		-//
+		-headings
+		-plain links
+		-line breaks
+		-lists
+		-tables
+		-escape
+	-XWiki
+		-styling (% color:red %)
+
+Improvements to DocuWiki:
+-svn integration
+-more flex table syntax
+-easier list syntax (no double space start)
+-easier header syntax (no ending ==)
+-better control macros (~~NOTOC~~ vs toc:none)
+-comment blocks
+-better link syntax
+
+Improvements to TWiki/FOSwiki:
+-svn integration
+-better syntax (no 3-space headings, simpler headers, no escaping needed for &<>)
+-hierarchies
+
+XWiki is pretty good: http://platform.xwiki.org/xwiki/bin/view/Main/XWikiSyntax
+
+

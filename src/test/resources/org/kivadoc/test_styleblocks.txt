@@ -1,0 +1,16 @@
+(% float: right %)
+[[[
+Para1
+* list
+
+Para2
+]]]
+
+(% background-color: #fee %)
+[[[Code]]]
+
+(% background-color: #efe %)
+[[[Para1
+
+Para2]]]
+

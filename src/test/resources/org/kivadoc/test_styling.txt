@@ -1,0 +1,2 @@
+(% style: error; margin: 1em %)
+error text

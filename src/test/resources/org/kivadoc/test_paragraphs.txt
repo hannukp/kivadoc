@@ -1,0 +1,8 @@
+Link http://www.mbnet.fi[foo
+bar]
+
+Style **bold
+still bold**.
+
+(% width:20em; float:left %)
+image:foo.png[Hello world]
